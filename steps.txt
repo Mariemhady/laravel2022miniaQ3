@@ -1,0 +1,143 @@
+1- php -v  ==> >= 7.4 
+2- install composer --> composer -v 
+3-  option 1 : 
+        composer global require laravel/installer
+        laravel new projectName
+
+    option 2 : 
+        composer create-project laravel/laravel projectName
+
+4- cd projectName
+php artisan 
+5- php artisan serve 
+6- if you need to change the port: 
+        php artisan serve --port 7000
+
+
+mvc --> models views controller routing
+--------------------------------------------------
+
+mvc 
+
+
+Routing --> 
+
+view --> 
+---------------------------------------------------------
+
+
+1- layout --> @extends 
+                @yeild 
+                @section
+2- controller 
+
+
+ 1- naming conv. 
+
+        controller --> single --> Post, Comment, Student
+
+        Routes --> Plural --> posts, comments 
+
+        Table --> Plural 
+
+
+ 2- cmd line       
+        php artisan make:controller PostController 
+
+     -----------------------------------------
+
+     1- controller --> php artisan make:controller StudentController 
+
+
+     2- index ---> 
+        web.php --> Route 
+                Route::get("students", [StudentController::class, "index" ])   
+
+3- Button --> form 
+
+Database Connection 
+
+        1- Database name 
+                        .env --> my Database name
+
+        2- Migrations 
+
+                        php artisan migrate 
+
+
+        create Database 
+        run migration 
+        create table --> php artisan make:migration create_posts_table
+        run migration --> php artisan migrate
+
+
+        controller --> Model   --> Database 
+
+        create model 
+
+        1- each table has model, 
+                model represent record in the table  --> 
+                Post --> php artisan make:model Post
+----------------------------------------------------------------
+
+Crud --> create list update delete show 
+
+.env --> Database name --> Restart server 
+
+routes --> web.php 
+                Route::get("/posts", [PostController:class, "index"])
+
+controller --> php artisan make:controller PostController
+
+php artisan make:migration create_posts_table 
+
+php artisan migrate
+
+php artisan make:model Post 
+
+
+
+controller : 
+        list 
+                Post::all()
+
+        create 
+                new Post 
+                --> title 
+                --> body 
+
+-------------------------------------------
+
+        edit button --> id --> get data
+        submit --> update --> id 
+--------------------------------------- 
+
+
+Index --> list 
+show --> view single
+create --> redirect to form 
+store --> save new item
+edit --> redirect to form
+update --> update item 
+delete --> delete item 
+
+// model + resource controller -->  php artisan make:controller BlogController -r -m Blog
+// route --> Route::resource("blogs", BlogController::class);
+
+// table 
+-------------------------------------------------------
+seeding + factory 
+
+1- factory 
+        php artisan make:factory PostFactory --model=Post
+
+        inside file --> 
+                "title"=>$this->faker->name(),
+2- Seeder
+        php artisan make:seed PostTableSeeder
+                 inside file -->   
+                 Blog::factory()->count(50)->create();   
+
+php artisan db:seed --class=PostTableSeeder          
+
+
