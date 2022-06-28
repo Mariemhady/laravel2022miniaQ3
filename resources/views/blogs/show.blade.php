@@ -5,7 +5,8 @@
 
   @section("body")
 
-      {{-- @dd($data) --}}
+
+      @dd($data)
     <div class="container text-center my-5">
       <div class="card text-center" style="width: 18rem;">
         <div class="card-body">
@@ -19,3 +20,40 @@
       </div>
     </div>
     @endsection
+
+
+
+
+
+    {{-- {{$data->blogs}} --}}
+
+{{-- @foreach ($data->blogs as $blog)
+{{-- @dd($item) --}}
+{{-- <tr>  --}}
+ 
+    {{-- <td> --}}
+        {{-- {{$blog->name}} --}}
+    {{-- </td>
+</tr> --}}
+
+{{-- @endforeach  --}}
+
+
+{{-- $table->unsignedBigInteger('user_id');
+
+$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); --}}
+
+
+{{-- public function show(User $user)
+{
+    // dd($user);
+    return view("blogs.showuser", ["data"=> $user]);
+
+} --}}
+
+
+{{-- 
+// public function __construct()
+// {
+//     $this->middleware('auth');
+// } --}}

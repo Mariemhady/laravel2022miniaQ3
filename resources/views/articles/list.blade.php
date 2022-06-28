@@ -8,7 +8,29 @@
 
 @endsection
 
+{{-- @dd(auth()->user()) --}}
+
+
+{{-- @if (auth()->user()->role == "admin")
+    hello Admin
+@endif --}}
+ 
+ 
+
+
 @section('body')
+        @can('isAdmin')
+            <h1 class="text-danger">  I am Admin  </h1>
+        @elsecan("isManager")
+            <h1 class="text-warning">  I am Manager  </h1>
+        @elsecan("isUser")
+            <h1 class="text-info">  I am User  </h1>
+        @else 
+            <h1 class="text-dark">  I am Guest  </h1>
+        @endcan
+
+
+
    <a href="{{route("article.create")}}" class="btn btn-info"> Create Article</a>
    <table class="table"> 
         <tr> 
@@ -38,6 +60,9 @@
                 </td>
                 <td>
                     {{$article->number}}
+                </td>
+                <td>
+                    {{$article->user->name}}
                 </td>
                 <td> 
                     {{-- <a class="btn btn-warning" href="/show/{{$article->id}}">Show</a>  --}}

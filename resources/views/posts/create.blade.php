@@ -16,6 +16,14 @@
       <textarea class="form-control" name="body" placeholder="Leave a body here" id="floatingTextarea"></textarea>
 
     </div>
+    {{-- {{$data}} --}}
+    <select class="form-select" name="user_id">
+     
+      @foreach ($data as $item)
+        <option value="{{$item->id}}">{{$item->name}}</option>
+      @endforeach
+
+    </select>
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

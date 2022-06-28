@@ -19,6 +19,9 @@
                 Title
             </th>
             <th>
+                User ID
+            </th>
+            <th>
                 Number
             </th>
             <th>
@@ -35,6 +38,11 @@
                 </td> 
                 <td>
                     {{$blog->title}}
+                </td>
+                <td>
+                    <a href="{{route('users.show', [$blog->user->id])}}">{{$blog->user->name}}</a> 
+
+                    
                 </td>
                 <td>
                     {{$blog->number}}

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
+
 
 
 
@@ -60,3 +62,14 @@ Route::delete("/delete/{id}", [ArticleController::class, "destroy"]);
 Route::resource("blogs", BlogController::class);
 
 
+Route::resource("users", UserController::class);
+
+
+
+
+
+Route::get("user/posts/{id}", [PostController::class, "usersPost"])->name("posts.usersPost");
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

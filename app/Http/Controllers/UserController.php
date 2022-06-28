@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
 use App\Models\User;
-
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-       $blogs = Blog::all();
-       return view("blogs.index", ["data"=> $blogs]);
+        //
     }
 
     /**
@@ -27,9 +24,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        // dd($users);
-        return view("blogs.create", ["data"=> $users]);
+        //
     }
 
     /**
@@ -40,64 +35,52 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $request->validate([
-            "title" =>'required | min:5 | max:10',
-            "number" => 'required | numeric'
-        ]);
-        //  dd($errors);
-        Blog::create($request->all()); 
-        return redirect()->route("blogs.index");  
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show(User $user)
     {
-        // dd($blog);
-        return view("blogs.show", ["data"=> $blog]);
-
+        // dd($user);
+        return view("blogs.userDetails", ["data"=>$user]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(User $user)
     {
-        return view("blogs.edit", ["data"=> $blog]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, User $user)
     {
-       $blog->update($request->all());
-       return redirect()->route("blogs.index");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy(User $user)
     {
-        $blog->delete();
-        return redirect()->route("blogs.index");
+        //
     }
-
 }

@@ -140,4 +140,94 @@ seeding + factory
 
 php artisan db:seed --class=PostTableSeeder          
 
+-----------------------------------------
+// login register signin 
+Simple Auth: 
+        1- composer require laravel/ui
+        2- php artisan ui bootstrap
+        3- php artisan ui bootstrap --auth
+        4- npm install resolve-url-loader@^5.0.0 --save-dev --legacy-peer-deps
+        5- npm install && npm run dev
+        6- php artisan serve
+
+
+Auth with Jetstream:
+        1- composer require laravel/jetstream
+        2- php artisan jetstream:install livewire
+        3- php artisan migrate
+        4- npm install
+        5- npm run dev
+        6- php artisan serve
+
+
+
+
+---------------------------------------
+
+Blog -- User --> Relation --> one to many 
+
+
+table blog --> user_id 
+
+
+
+
+table user 
+
+
+
+1- add user_id --> table blogs 
+2- relation --> one to many 
+3- hasmany , belongsto 
+4- store --> user id
+
+
+1- name --> <a>
+2- route --> userController -->  
+3- file 
+
+
+-----------------------------------------------
+
+post user --> one to many 
+
+1- table posts --> user_id
+            1-    php artisan make:migration add_user_id_to_posts_table
+
+          (in the migration file)       $table->unsignedBigInteger('user_id');
+            $table->foreign("user_id")->references("id")->on("users")->onDelete('cascade');
+
+2- relation --> 
+        user has many posts 
+        post belongs to user
+        Model 
+        1- User.php 
+                 public function posts()
+                        {
+                                return $this->hasMany(Post::class);
+                        }
+        2- Post.php
+                public function user(){
+                        return $this->belongsTo(User::class);
+                }
+
+3- 
+
+------------------------------------------------------
+
+Article user --> relation --> one to many
+----------------------------------------
+
+table role (id ) --> user 
+
+user --> role 
+-------------------------
+admin --> files 
+
+user --> files 
+
+manager --> files 
+
+guest --> files
+
 

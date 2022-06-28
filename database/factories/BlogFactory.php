@@ -19,7 +19,9 @@ class BlogFactory extends Factory
         return [
             "title"=>$this->faker->name(),
             "number"=>$this->faker->numberBetween(10,20),
-            "name"=>$this->faker->name()
+            "name"=>$this->faker->name(),
+            "user_id"=>$this->faker->numberBetween(1,5),
+
         ];
     }
 }

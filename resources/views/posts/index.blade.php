@@ -23,21 +23,28 @@
             <th>
                 Description
             </th>
+            <th>
+                Author
+            </th>
         </tr>    
         {{-- @dd($data) --}}
         @foreach ($data as $item)
-            {{-- @dd($item) --}}
+            {{-- @dd($item->user->name) --}}
             <tr> 
                 <td> {{$loop->iteration}} </td>
                 <td>
-                    {{-- @dd($item) --}}
-                    {{-- {{$item["title"]}}  --}}
                     {{$item->title}}
                 </td> 
                 <td>
                     {{$item->body}}
-                    {{-- {{$item["description"]}}  --}}
                 </td>
+
+                <td>
+                    <a  href="{{route('posts.usersPost', [$item->user->id])}}">{{$item->user->name}}</a> 
+
+                    
+                </td>
+
                 <td> 
                     <a class="btn btn-warning" href="/post/{{$item->id}}">Show</a> 
                 </td>

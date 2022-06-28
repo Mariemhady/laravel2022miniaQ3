@@ -6,6 +6,20 @@ use Illuminate\Http\Request;
 use  App\Models\Article;
 class ArticleController extends Controller
 {
+
+    // public function __construct(){
+    //     $this->middleware('auth');
+    // }
+
+    // public function __construct(){
+    //     $this->middleware('auth', ["only" => "create"]);
+    // }
+
+    public function __construct(){
+        $this->middleware('auth', ["except" => "list"]);
+    }
+
+
     public function list(){
         $articles = Article::all();
         return view("articles.list", ["articles"=> $articles ]);
@@ -20,6 +34,10 @@ class ArticleController extends Controller
        $article->title = request("title");
        $article->name = request("name");
        $article->number = request("number");
+
+       $article->user_id = auth()->user()->id;
+        
+
        $article->save();
        return redirect()->route("article.list");
     }
